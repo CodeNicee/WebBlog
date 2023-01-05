@@ -111,9 +111,70 @@
                     document.getElementById('display').innerHTML = temp
                 }
             }
+
+            function addblog() {
+                let obj = {
+                    "id": null,
+                    "gameName": document.forms['myform']['gameName'].value,
+                    "picture": document.forms['myform']['picture'].value,
+                    "review": document.forms['myform']['review'].value,
+                    "score": document.forms['myform']['score'].value
+                }
+                console.log(obj);
+                let text = JSON.stringify(obj);
+                console.log(text);
+                let xhttp = new XMLHttpRequest();
+                xhttp.open("POST", 'http://localhost:3000/myblog');
+                xhttp.setRequestHeader('Content-Type', 'application/json');
+                xhttp.send(text);
+            }
         </script>
-        <div class="row d-flex justify-content-center mb-5">
-            <a href="addblog.html" class="btn btn-primary">Add Review</a>
+    </div>
+
+    <!-- Button trigger modal -->
+    <div class="row mb-5">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Review
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" id="myform">
+                        <div class="row">
+                            <h1>Add Review</h1>
+                            <div class="col-12">
+                                <label for="" class="form-label">Game Name</label>
+                                <input type="text" name="" class="form-control" id="gameName">
+                            </div>
+                            <div class="col-6">
+                                <label for="" class="form-label">Picture</label>
+                                <input type="text" name="" class="form-control" id="picture" placeholder="Url">
+                            </div>
+                            <div class="col-6">
+                                <label for="" class="form-label">Score</label>
+                                <input type="number" name="" class="form-control" id="score">
+                            </div>
+                            <div class="col-12">
+                                <label for="" class="form-label">Review</label>
+                                <textarea type="text" name="" class="form-control" id="review"></textarea>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addblog()"
+                        data-bs-dismiss="modal">Save</button>
+                </div>
+                </form>
+            </div>
         </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
