@@ -37,7 +37,8 @@
 
                 <div class="row">
                     <div class="col">
-                        <input type="button" class="btn btn-primary mt-5" onclick="addblog()" value="ADD">
+                        <input type="button" class="btn btn-primary mt-5" onclick="addblog()" value="Add">
+                        <a href="index.html" class="btn btn-primary mt-5 d-flex float-end">Close</a>
                     </div>
                 </div>
             </div>
@@ -47,10 +48,10 @@
         function addblog() {
             let obj = {
                 "id": null,
-                "movieName": document.forms['myform']['gameName'].value,
-                "movieLength": document.forms['myform']['picture'].value,
-                "director": document.forms['myform']['review'].value,
-                "category": document.forms['myform']['score'].value
+                "gameName": document.forms['myform']['gameName'].value,
+                "picture": document.forms['myform']['picture'].value,
+                "review": document.forms['myform']['review'].value,
+                "score": document.forms['myform']['score'].value
             }
             console.log(obj);
             let text = JSON.stringify(obj);
